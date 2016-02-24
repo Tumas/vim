@@ -14,7 +14,20 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Vundle plugins
+Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+
+" Colors
+Plugin 'rainux/vim-desert-warm-256'
+Plugin 'tomasr/molokai'
+Plugin 'vim-scripts/256-jungle'
+Plugin 'jnurmine/Zenburn'
+
+" Languages
+Plugin 'kchmck/vim-coffee-script'
+
+" Exuberant Ctags
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -34,6 +47,8 @@ set mouse=a
 set vb t_vb=
 syntax on
 
+colorscheme molokai
+
 " editing
 set autoindent
 set expandtab
@@ -41,6 +56,7 @@ set sts=2
 set sw=2
 set bs=2
 set shiftround
+set showmatch
 
 " search
 set hlsearch
@@ -93,3 +109,10 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" Language speicific configs
+let python_highlight_all = 1
+
+au FileType py set autoindent
+au FileType py set smartindent
+au FileType py set textwidth=79 " PEP-8 Friendly
