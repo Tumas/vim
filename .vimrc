@@ -16,6 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Vundle plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Colors
 Plugin 'rainux/vim-desert-warm-256'
