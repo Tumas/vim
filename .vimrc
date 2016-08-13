@@ -16,6 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Vundle plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-endwise'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " Colors
@@ -26,6 +27,11 @@ Plugin 'jnurmine/Zenburn'
 
 " Languages
 Plugin 'kchmck/vim-coffee-script'
+
+" Ruby/Rails
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'thoughtbot/vim-rspec'
 
 " Exuberant Ctags
 Plugin 'majutsushi/tagbar'
