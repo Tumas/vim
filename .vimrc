@@ -116,6 +116,9 @@ noremap <space> viw
 noremap <leader>ev :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
 
+" treat json files as javascript
+:autocmd BufNewFile,BufRead *.json set ft=javascript
+
 "Spec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
