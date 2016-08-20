@@ -45,7 +45,7 @@ Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" END VUNDLE 
+" END VUNDLE
 
 " get rid of .swp and ~ files
 set directory=/tmp
@@ -127,6 +127,16 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " Language speicific configs
 let python_highlight_all = 1
+
+" use specific color to visualize 120+ columns
+let &colorcolumn=join(range(121,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+" auto remove all trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" run reek & rubocop on current file
+map <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
 au FileType py set autoindent
 au FileType py set smartindent
