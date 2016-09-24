@@ -18,6 +18,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
 
 " Colors
 Plugin 'rainux/vim-desert-warm-256'
@@ -40,6 +41,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+let g:vim_markdown_folding_disabled = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
