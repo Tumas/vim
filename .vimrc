@@ -3,48 +3,45 @@ let mapleader = ","
 filetype plugin on
 filetype plugin indent on
 
-" BEGIN VUNDLE
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" plugins
+call plug#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Vundle plugins
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-endwise'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/emmet-vim'
 
 " Colors
-Plugin 'rainux/vim-desert-warm-256'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/256-jungle'
-Plugin 'jnurmine/Zenburn'
+Plug 'rainux/vim-desert-warm-256'
+Plug 'tomasr/molokai'
+Plug 'vim-scripts/256-jungle'
+Plug 'jnurmine/Zenburn'
 
 " Languages
-Plugin 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
+Plug 'Chiel92/vim-autoformat'
 
 " Ruby/Rails
-Plugin 'tpope/vim-rails'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'thoughtbot/vim-rspec'
 
-" Exuberant Ctags
-Plugin 'majutsushi/tagbar'
+" Tags
+Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" Add plugins to &runtimepath
+call plug#end()
 
 let g:vim_markdown_folding_disabled = 1
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 " END VUNDLE
@@ -122,10 +119,10 @@ noremap <leader>sv :source $MYVIMRC<cr>
 :autocmd BufNewFile,BufRead *.json set ft=javascript
 
 "Spec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+noremap <Leader>t :call RunCurrentSpecFile()<CR>
+noremap <Leader>s :call RunNearestSpec()<CR>
+noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>a :call RunAllSpecs()<CR>
 
 " Language speicific configs
 let python_highlight_all = 1
@@ -138,8 +135,16 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 autocmd BufWritePre * %s/\s\+$//e
 
 " run reek & rubocop on current file
-map <leader>rr  <Esc>:!reek %; rubocop %<CR>
+noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
 au FileType py set autoindent
 au FileType py set smartindent
 au FileType py set textwidth=79 " PEP-8 Friendly
+
+" tags
+set tags=./tags;,tags;
+
+noremap <Leader>st :TagbarToggle<CR>
+
+" vms
+noremap - ddp
