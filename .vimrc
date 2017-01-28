@@ -11,8 +11,10 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
+
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Colors
 Plug 'rainux/vim-desert-warm-256'
@@ -140,6 +142,11 @@ noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 au FileType py set autoindent
 au FileType py set smartindent
 au FileType py set textwidth=79 " PEP-8 Friendly
+
+" File finder
+let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
+
+noremap <C-p> :FZF<CR>
 
 " tags
 set tags=./tags;,tags;
