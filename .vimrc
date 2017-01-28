@@ -113,21 +113,13 @@ noremap <silent> <C-l> :wincmd l<CR>
 " Select a word
 noremap <space> viw
 
+" show relative path to current file
+noremap <leader>e :echo @%<CR>
+noremap - ddp
+
 " edit .vimrc quickly
 noremap <leader>ev :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
-
-" treat json files as javascript
-:autocmd BufNewFile,BufRead *.json set ft=javascript
-
-"Spec.vim mappings
-noremap <Leader>t :call RunCurrentSpecFile()<CR>
-noremap <Leader>s :call RunNearestSpec()<CR>
-noremap <Leader>l :call RunLastSpec()<CR>
-noremap <Leader>a :call RunAllSpecs()<CR>
-
-" Language speicific configs
-let python_highlight_all = 1
 
 " use specific color to visualize 120+ columns
 let &colorcolumn=join(range(121,999),",")
@@ -136,22 +128,35 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 " auto remove all trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
-" run reek & rubocop on current file
-noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
+" File finder
+"
+let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
+noremap <C-p> :FZF<CR>
+
+" TAGS
+"
+set tags=./tags;,tags;
+noremap <Leader>st :TagbarToggle<CR>
+
+" ------------------
+
+" Python
+let python_highlight_all = 1
 
 au FileType py set autoindent
 au FileType py set smartindent
 au FileType py set textwidth=79 " PEP-8 Friendly
 
-" File finder
-let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
+" Ruby
+" run reek & rubocop on current file
+noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
-noremap <C-p> :FZF<CR>
+"Spec.vim mappings
+noremap <Leader>t :call RunCurrentSpecFile()<CR>
+noremap <Leader>s :call RunNearestSpec()<CR>
+noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>a :call RunAllSpecs()<CR>
 
-" tags
-set tags=./tags;,tags;
-
-noremap <Leader>st :TagbarToggle<CR>
-
-" vms
-noremap - ddp
+" JSON
+" treat json files as javascript
+:autocmd BufNewFile,BufRead *.json set ft=javascript
