@@ -12,6 +12,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'mattn/emmet-vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'janko-m/vim-test'
 
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -29,7 +31,16 @@ Plug 'Chiel92/vim-autoformat'
 " Ruby/Rails
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
-Plug 'thoughtbot/vim-rspec'
+" Plug 'thoughtbot/vim-rspec'
+
+" Clojure
+Plug 'guns/vim-clojure-static'
+Plug 'ctford/vim-fireplace-easy'
+Plug 'tpope/vim-fireplace'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'guns/vim-clojure-highlight'
+Plug 'venantius/vim-eastwood'
+Plug 'venantius/vim-cljfmt'
 
 " Tags
 Plug 'majutsushi/tagbar'
@@ -152,11 +163,29 @@ au FileType py set textwidth=79 " PEP-8 Friendly
 noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
 "Spec.vim mappings
-noremap <Leader>t :call RunCurrentSpecFile()<CR>
-noremap <Leader>s :call RunNearestSpec()<CR>
-noremap <Leader>l :call RunLastSpec()<CR>
-noremap <Leader>a :call RunAllSpecs()<CR>
+"noremap <Leader>t :call RunCurrentSpecFile()<CR>
+"noremap <Leader>s :call RunNearestSpec()<CR>
+"noremap <Leader>l :call RunLastSpec()<CR>
+"noremap <Leader>a :call RunAllSpecs()<CR>
+
+nmap <silent> <leader>s :TestNearest<CR>
+nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 " JSON
 " treat json files as javascript
 :autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_clojure_checkers = ['eastwood']
