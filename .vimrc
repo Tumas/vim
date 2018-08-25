@@ -1,63 +1,19 @@
 let mapleader = ","
 
-filetype plugin on
-filetype plugin indent on
+packadd minpac
+call minpac#init()
 
-filetype off
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('tomasr/molokai')
 
-" plugins
-call plug#begin()
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('junegunn/fzf.vim')
+set rtp+=/usr/local/opt/fzf
 
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-endwise'
-Plug 'mattn/emmet-vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'janko-m/vim-test'
+call minpac#add('tpope/vim-projectionist')
 
-" Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Colors
-Plug 'rainux/vim-desert-warm-256'
-Plug 'tomasr/molokai'
-Plug 'vim-scripts/256-jungle'
-Plug 'jnurmine/Zenburn'
-
-" Languages
-Plug 'kchmck/vim-coffee-script'
-Plug 'Chiel92/vim-autoformat'
-
-" Ruby/Rails
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
-" Plug 'thoughtbot/vim-rspec'
-
-" Clojure
-Plug 'guns/vim-clojure-static'
-Plug 'ctford/vim-fireplace-easy'
-Plug 'tpope/vim-fireplace'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'guns/vim-clojure-highlight'
-Plug 'venantius/vim-eastwood'
-Plug 'venantius/vim-cljfmt'
-
-" Tags
-Plug 'majutsushi/tagbar'
-Plug 'ludovicchabant/vim-gutentags'
-
-" Markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-
-" Add plugins to &runtimepath
-call plug#end()
-
-let g:vim_markdown_folding_disabled = 1
-
-filetype plugin indent on    " required
-
-" END VUNDLE
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
 " get rid of .swp and ~ files
 set directory=/tmp
@@ -93,14 +49,8 @@ set number
 set cursorline
 
 " show status line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\[HEX=\%02.2B]\ [%p%%]\ [LEN=%L]%{fugitive#statusline()}
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\[HEX=\%02.2B]\ [%p%%]\ [LEN=%L]
 set laststatus=2
-
-"set guifont=Dejavu\ Sans\ mono\ 9
-"set guifont=droid\ sans\ mono\ 9
-"set guifont=Inconsolata\ 11
-"set guifont=Consolas\ 10
-"set guifont=Monaco\ 10
 
 " disable arrow keys
 noremap <up> <nop>
@@ -128,10 +78,6 @@ noremap <space> viw
 noremap <leader>e :echo @%<CR>
 noremap - ddp
 
-" edit .vimrc quickly
-noremap <leader>ev :vsplit $MYVIMRC<cr>
-noremap <leader>sv :source $MYVIMRC<cr>
-
 " use specific color to visualize 120+ columns
 let &colorcolumn=join(range(121,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
@@ -144,19 +90,34 @@ autocmd BufWritePre * %s/\s\+$//e
 let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 noremap <C-p> :FZF<CR>
 
+" HTML
+"
+call minpac#add('mattn/emmet-vim')
+call minpac#add('othree/html5.vim')
+
+" CSS
+"
+call minpac#add('ap/vim-css-color')
+call minpac#add('hail2u/vim-css3-syntax')
+
 " TAGS
 "
-set tags=./tags;,tags;
-noremap <Leader>st :TagbarToggle<CR>
+" set tags=./tags;,tags;
+" noremap <Leader>st :TagbarToggle<CR>
 
 " ------------------
+"
+
+" Solidity
+"
+" call minpac#add('tomlion/vim-solidity')
 
 " Python
-let python_highlight_all = 1
+" let python_highlight_all = 1
 
-au FileType py set autoindent
-au FileType py set smartindent
-au FileType py set textwidth=79 " PEP-8 Friendly
+" au FileType py set autoindent
+" au FileType py set smartindent
+" au FileType py set textwidth=79 " PEP-8 Friendly
 
 " Ruby
 " run reek & rubocop on current file
@@ -168,24 +129,12 @@ noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 "noremap <Leader>l :call RunLastSpec()<CR>
 "noremap <Leader>a :call RunAllSpecs()<CR>
 
-nmap <silent> <leader>s :TestNearest<CR>
-nmap <silent> <leader>t :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+" nmap <silent> <leader>s :TestNearest<CR>
+" nmap <silent> <leader>t :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
 
 " JSON
 " treat json files as javascript
 :autocmd BufNewFile,BufRead *.json set ft=javascript
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_clojure_checkers = ['eastwood']
