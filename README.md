@@ -1,3 +1,5 @@
+# Installation
+
     ln -s ~/Projects/vim/.vim ~/.vim
     ln -s ~/Projects/vim/init.vim ~/.config/nvim/init.vim
     ln -s ~/Projects/vim/bash.vim ~/.bash.vim
@@ -5,7 +7,7 @@
     # ~/.bash.rc
     source ~/.bash.vim
 
-    # Dependencies
-    - [https://github.com/k-takata/minpac](minpac)
-    - [https://github.com/BurntSushi/ripgrep](ripgrep)
+# Dependencies
+- [https://github.com/k-takata/minpac](minpac)
+- [https://github.com/BurntSushi/ripgrep](ripgrep)
 
