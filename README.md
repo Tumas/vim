@@ -8,6 +8,6 @@
     source ~/.bash.vim
 
 # Dependencies
-- [https://github.com/k-takata/minpac](minpac)
-- [https://github.com/BurntSushi/ripgrep](ripgrep)
+- [minpac](https://github.com/k-takata/minpac)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
 
