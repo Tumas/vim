@@ -8,7 +8,6 @@ call minpac#add('tomasr/molokai')
 
 call minpac#add('scrooloose/nerdtree')
 call minpac#add('junegunn/fzf.vim')
-set rtp+=/usr/local/opt/fzf
 
 call minpac#add('tpope/vim-projectionist')
 
@@ -87,6 +86,9 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " File finder
 "
+"set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+
 let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 noremap <C-p> :FZF<CR>
 
