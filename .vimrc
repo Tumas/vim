@@ -4,11 +4,19 @@ packadd minpac
 call minpac#init()
 
 call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('tomasr/molokai')
 
+" colors
+"
+call minpac#add('tomasr/molokai')
+call minpac#add('AlessandroYorba/Alduin')
+call minpac#add('croaker/mustang-vim')
+
+colorscheme alduin
+
+" file management
+"
 call minpac#add('scrooloose/nerdtree')
 call minpac#add('junegunn/fzf.vim')
-
 call minpac#add('tpope/vim-projectionist')
 
 command! PackUpdate call minpac#update()
@@ -25,8 +33,6 @@ set noautochdir
 set mouse=a
 set vb t_vb=
 syntax on
-
-colorscheme molokai
 
 " editing
 set autoindent
@@ -101,6 +107,10 @@ call minpac#add('othree/html5.vim')
 "
 call minpac#add('ap/vim-css-color')
 call minpac#add('hail2u/vim-css3-syntax')
+
+" JavaScript
+"
+call minpac#add('pangloss/vim-javascript')
 
 " TAGS
 "
