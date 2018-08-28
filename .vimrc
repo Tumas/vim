@@ -1,9 +1,14 @@
 let mapleader = ","
 
+" plugin management
+"
 packadd minpac
-call minpac#init()
 
+call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
 " colors
 "
@@ -13,14 +18,20 @@ call minpac#add('croaker/mustang-vim')
 
 colorscheme alduin
 
+set t_Co=256
+set background=dark
+
 " file management
 "
 call minpac#add('scrooloose/nerdtree')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('tpope/vim-projectionist')
 
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+"set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+
+let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
+noremap <C-p> :FZF<CR>
 
 " get rid of .swp and ~ files
 set directory=/tmp
@@ -66,10 +77,6 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" vim
-set t_Co=256
-set background=dark
-
 " window split management
 noremap <silent> <C-h> :wincmd h<CR>
 noremap <silent> <C-j> :wincmd j<CR>
@@ -89,14 +96,6 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " auto remove all trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
-
-" File finder
-"
-"set rtp+=/usr/local/opt/fzf
-set rtp+=~/.fzf
-
-let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
-noremap <C-p> :FZF<CR>
 
 " HTML
 "
