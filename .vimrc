@@ -27,8 +27,8 @@ call minpac#add('scrooloose/nerdtree')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('tpope/vim-projectionist')
 
-"set rtp+=/usr/local/opt/fzf
-set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
+"set rtp+=~/.fzf
 
 let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 noremap <C-p> :FZF<CR>
@@ -149,3 +149,25 @@ noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 " JSON
 " treat json files as javascript
 :autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" File Search
+"
+function! s:escape(path)
+  return substitute(a:path, ' ', '\\ ', 'g')
+endfunction
+
+function! RgHandler(line)
+  let parts = split(a:line, ':')
+  let [fn, lno] = parts[0 : 1]
+  execute 'e '. s:escape(fn)
+  execute lno
+  normal! zz
+endfunction
+
+command! -nargs=+ Frg call fzf#run({
+  \ 'source': 'rg -i "<args>"',
+  \ 'sink': function('RgHandler'),
+  \ 'options': '+m -e --reverse',
+  \ })
+
+noremap <C-s> :Frg<Space>
