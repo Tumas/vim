@@ -28,7 +28,7 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('tpope/vim-projectionist')
 
 set rtp+=/usr/local/opt/fzf
-"set rtp+=~/.fzf
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 
 let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 noremap <C-p> :FZF<CR>
