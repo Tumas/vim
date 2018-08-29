@@ -33,6 +33,10 @@ set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 noremap <C-p> :FZF<CR>
 
+" git
+"
+call minpac#add('tpope/vim-fugitive')
+
 " get rid of .swp and ~ files
 set directory=/tmp
 set backupdir=/tmp
