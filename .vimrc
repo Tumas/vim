@@ -15,10 +15,11 @@ command! PackClean call minpac#clean()
 call minpac#add('tomasr/molokai')
 call minpac#add('AlessandroYorba/Alduin')
 call minpac#add('croaker/mustang-vim')
+call minpac#add('rakr/vim-one')
 
 colorscheme alduin
 
-set t_Co=256
+" set t_Co=256
 set background=dark
 
 " file management
