@@ -38,6 +38,19 @@ noremap <C-p> :FZF<CR>
 "
 call minpac#add('tpope/vim-fugitive')
 
+" async linting
+"
+call minpac#add('w0rp/ale')
+
+let g:ale_linters = {
+\  'javascript': ['eslint']
+\ }
+
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
 " get rid of .swp and ~ files
 set directory=/tmp
 set backupdir=/tmp
