@@ -51,6 +51,10 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 
+" comments
+"
+call minpac#add('tpope/vim-commentary')
+
 " get rid of .swp and ~ files
 set directory=/tmp
 set backupdir=/tmp
