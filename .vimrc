@@ -22,9 +22,13 @@ colorscheme alduin
 " set t_Co=256
 set background=dark
 
-" file management
+" Project management
 "
 call minpac#add('scrooloose/nerdtree')
+call minpac#add('airblade/vim-rooter')
+
+" file management
+"
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('tpope/vim-projectionist')
 
