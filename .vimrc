@@ -176,6 +176,9 @@ noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 " treat json files as javascript
 :autocmd BufNewFile,BufRead *.json set ft=javascript
 
+" https://coderwall.com/p/faceag/format-json-in-vim
+com! FormatJSON %!python -m json.tool
+
 " File Search
 "
 function! s:escape(path)
