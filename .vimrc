@@ -44,7 +44,7 @@ call minpac#add('tpope/vim-fugitive')
 
 " async linting
 "
-call minpac#add('w0rp/ale')
+call minpac#add('dense-analysis/ale')
 
 let g:ale_linters = {
 \  'javascript': ['eslint']
