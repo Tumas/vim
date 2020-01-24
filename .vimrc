@@ -16,7 +16,18 @@ call minpac#add('tomasr/molokai')
 call minpac#add('AlessandroYorba/Alduin')
 call minpac#add('croaker/mustang-vim')
 call minpac#add('rakr/vim-one')
+call minpac#add('amadeus/vim-mjml')
 
+" new iteration
+call minpac#add('alvan/vim-closetag')
+call minpac#add('jiangmiao/auto-pairs')
+
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_filetypes = 'html,xhtml,phtml,jsx,js'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,js'
+
+" colorscheme one
 colorscheme alduin
 
 " set t_Co=256
@@ -43,13 +54,16 @@ call minpac#add('tpope/vim-projectionist')
 " git
 "
 call minpac#add('tpope/vim-fugitive')
+call minpac#add('junegunn/gv.vim')
+call minpac#add('mhinz/vim-signify')
 
 " async linting
 "
 call minpac#add('dense-analysis/ale')
 
 let g:ale_linters = {
-\  'javascript': ['eslint']
+\  'javascript': ['eslint'],
+\  'ruby': ['rubocop', 'ruby', 'rails_best_practices']
 \ }
 
 nmap <silent> [W <Plug>(ale_first)
@@ -116,6 +130,11 @@ noremap <space> viw
 
 " show relative path to current file
 noremap <leader>e :echo @%<CR>
+
+" open NERDTree with specific file
+noremap <leader>d :NERDTreeFind<CR>
+
+" swap lines
 noremap - ddp
 
 " use specific color to visualize 120+ columns
@@ -138,6 +157,22 @@ call minpac#add('hail2u/vim-css3-syntax')
 " JavaScript
 "
 call minpac#add('pangloss/vim-javascript')
+" call minpac#add('mvolkmann/vim-js-arrow-function')
+
+" React
+"
+call minpac#add('mvolkmann/vim-react')
+
+" Ruby
+"
+call minpac#add('vim-ruby/vim-ruby')
+call minpac#add('thoughtbot/vim-rspec')
+
+" Markdown
+"
+call minpac#add('plasticboy/vim-markdown')
+
+let g:vim_markdown_folding_level = 6
 
 " TAGS
 "
@@ -156,10 +191,10 @@ call minpac#add('pangloss/vim-javascript')
 noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
 "Spec.vim mappings
-"noremap <Leader>t :call RunCurrentSpecFile()<CR>
-"noremap <Leader>s :call RunNearestSpec()<CR>
-"noremap <Leader>l :call RunLastSpec()<CR>
-"noremap <Leader>a :call RunAllSpecs()<CR>
+" noremap <Leader>t :call RunCurrentSpecFile()<CR>
+" noremap <Leader>s :call RunNearestSpec()<CR>
+" noremap <Leader>l :call RunLastSpec()<CR>
+" noremap <Leader>a :call RunAllSpecs()<CR>
 
 " nmap <silent> <leader>s :TestNearest<CR>
 " nmap <silent> <leader>t :TestFile<CR>
