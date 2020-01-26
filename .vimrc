@@ -27,6 +27,9 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
 let g:closetag_filetypes = 'html,xhtml,phtml,jsx,js'
 let g:closetag_xhtml_filetypes = 'xhtml,jsx,js'
 
+" sessions
+call minpac#add('tpope/vim-obsession')
+
 " colorscheme one
 colorscheme alduin
 
