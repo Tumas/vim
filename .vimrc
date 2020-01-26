@@ -211,3 +211,17 @@ noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
 " https://coderwall.com/p/faceag/format-json-in-vim
 com! FormatJSON %!python -m json.tool
+
+" Terminal mode
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+
+  tnoremap <C-h> <c-\><c-n><c-w>h
+  tnoremap <C-j> <c-\><c-n><c-w>j
+  tnoremap <C-k> <c-\><c-n><c-w>k
+  tnoremap <C-l> <c-\><c-n><c-w>l
+
+  " highlight! link TermCursor Cursor
+  " highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+endif
