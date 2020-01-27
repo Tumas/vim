@@ -224,4 +224,8 @@ if has('nvim')
 
   " highlight! link TermCursor Cursor
   " highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+
+  " nvr
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 endif
