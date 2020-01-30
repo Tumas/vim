@@ -63,11 +63,12 @@ call minpac#add('mhinz/vim-signify')
 
 " async linting
 "
+call minpac#add('tpope/vim-dispatch')
 call minpac#add('dense-analysis/ale')
 
 let g:ale_linters = {
 \  'javascript': ['eslint'],
-\  'ruby': ['rubocop', 'ruby', 'rails_best_practices']
+\  'ruby': ['rubocop', 'reek']
 \ }
 
 nmap <silent> [W <Plug>(ale_first)
@@ -194,17 +195,15 @@ let g:vim_markdown_folding_level = 6
 " run reek & rubocop on current file
 noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
 
-"Spec.vim mappings
-" noremap <Leader>t :call RunCurrentSpecFile()<CR>
-" noremap <Leader>s :call RunNearestSpec()<CR>
-" noremap <Leader>l :call RunLastSpec()<CR>
-" noremap <Leader>a :call RunAllSpecs()<CR>
+call minpac#add('janko/vim-test')
 
-" nmap <silent> <leader>s :TestNearest<CR>
-" nmap <silent> <leader>t :TestFile<CR>
-" nmap <silent> <leader>a :TestSuite<CR>
-" nmap <silent> <leader>l :TestLast<CR>
-" nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "dispatch"
+
+nmap <silent> <leader>s :TestNearest<CR>
+nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 " JSON
 " treat json files as javascript
