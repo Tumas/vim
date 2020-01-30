@@ -12,20 +12,11 @@ command! PackClean call minpac#clean()
 
 " colors
 "
-call minpac#add('tomasr/molokai')
 call minpac#add('AlessandroYorba/Alduin')
-call minpac#add('croaker/mustang-vim')
-call minpac#add('rakr/vim-one')
-call minpac#add('amadeus/vim-mjml')
 
-" new iteration
-call minpac#add('alvan/vim-closetag')
-call minpac#add('jiangmiao/auto-pairs')
-
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx'
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
-let g:closetag_filetypes = 'html,xhtml,phtml,jsx,js'
-let g:closetag_xhtml_filetypes = 'xhtml,jsx,js'
+" call minpac#add('tomasr/molokai')
+" call minpac#add('croaker/mustang-vim')
+" call minpac#add('rakr/vim-one')
 
 " sessions
 call minpac#add('tpope/vim-obsession')
@@ -154,6 +145,14 @@ autocmd BufWritePre * %s/\s\+$//e
 call minpac#add('mattn/emmet-vim')
 call minpac#add('othree/html5.vim')
 
+call minpac#add('alvan/vim-closetag')
+call minpac#add('jiangmiao/auto-pairs')
+
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_filetypes = 'html,xhtml,phtml,jsx,js'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,js'
+
 " CSS
 "
 call minpac#add('ap/vim-css-color')
@@ -170,6 +169,7 @@ call minpac#add('mvolkmann/vim-react')
 
 " Ruby
 "
+" call minpac#add('amadeus/vim-mjml')
 call minpac#add('vim-ruby/vim-ruby')
 call minpac#add('thoughtbot/vim-rspec')
 
@@ -191,10 +191,8 @@ let g:vim_markdown_folding_level = 6
 " au FileType py set smartindent
 " au FileType py set textwidth=79 " PEP-8 Friendly
 
-" Ruby
-" run reek & rubocop on current file
-noremap <leader>rr  <Esc>:!reek %; rubocop %<CR>
-
+" Tests
+"
 call minpac#add('janko/vim-test')
 
 let test#strategy = "dispatch"
