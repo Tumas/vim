@@ -67,6 +67,10 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 
+" Quicklist
+nmap <Leader>q :cn<CR>
+nmap <Leader>w :cp<CR>
+
 " comments
 "
 call minpac#add('tpope/vim-commentary')
