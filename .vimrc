@@ -41,10 +41,16 @@ set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 
 let g:fzf_action = { 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 noremap <C-p> :FZF<CR>
-noremap <C-s> :Rg<CR>
 noremap <Leader>p :Buffers<CR>
 
 call minpac#add('tpope/vim-projectionist')
+
+" Search
+"
+call minpac#add('mhinz/vim-grepper')
+
+nnoremap <Leader>G :Grepper -tool git<CR>
+nnoremap <Leader>g :Grepper -tool rg<CR>
 
 " git
 "
@@ -205,7 +211,7 @@ nmap <silent> <leader>s :TestNearest<CR>
 nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
 
 " JSON
 " treat json files as javascript
