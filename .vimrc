@@ -206,7 +206,7 @@ let g:vim_markdown_folding_level = 6
 call minpac#add('janko/vim-test')
 
 if has('nvim')
-  let test#strategy = "dispatch"
+  let test#strategy = "neovim"
 end
 
 nmap <silent> <leader>s :TestNearest<CR>
@@ -214,9 +214,9 @@ nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>v :TestVisit<CR>
 "
-nmap <silent> <leader>S :TestNearest -strategy=neovim<CR>
-nmap <silent> <leader>T :TestFile -strategy=neovim<CR>
-nmap <silent> <leader>L :TestLast -strategy=neovim<CR>
+nmap <silent> <leader>S :TestNearest -strategy=dispatch<CR>
+nmap <silent> <leader>T :TestFile -strategy=dispatch<CR>
+nmap <silent> <leader>L :TestLast -strategy=dispatch<CR>
 
 " JSON
 " treat json files as javascript
