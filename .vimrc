@@ -186,6 +186,7 @@ call minpac#add('thoughtbot/vim-rspec')
 " Markdown
 "
 call minpac#add('plasticboy/vim-markdown')
+call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
 
 let g:vim_markdown_folding_level = 6
 
